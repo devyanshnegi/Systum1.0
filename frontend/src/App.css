@@ -25,6 +25,7 @@ body{
   margin-left: 25%;
 }
 
+
 .messages{
   height: 70%;  
 }
@@ -66,6 +67,7 @@ body{
   font-size: 1.2rem;
   display: flex;
   align-items: flex-start;
+  font-size: 20;
 }
 
 .chatFooter {

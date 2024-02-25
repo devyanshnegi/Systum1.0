@@ -1,6 +1,6 @@
 import './App.css';
 import sendBtn from './assests/sendButton.png';
-import userIcon from './assests/finger.svg';
+import userIcon from './assests/user.jpg';
 import botIcon from './assests/bot.jpg'
 import { sendMsgToOpenAI } from './openai.js';
 import React, { useEffect, useState, useRef } from 'react';
@@ -17,11 +17,10 @@ function App() {
   }]);
 
   const handleSend = async () => {
+    await setMessages([messages, { text: input, isBot: false }]);
     const text = input;
-    setInput("");
-    setMessages([...messages, { text: text, isBot: false }]);
     const response = await sendMsgToOpenAI(text);
-    await setMessages([...messages, { text: response, isBot: true }]);
+    await setMessages([messages, { text: response.message.content, isBot: true }]);
     console.log(response);
   }
 
@@ -40,7 +39,7 @@ function App() {
             <img className='chatImg' src={botIcon} alt='' /><p>{messages[0].text}</p>
           </div> */}
           {
-            messages.map((message, i) => 
+            messages.map((message,i) => 
               <div key={i} className={message.isBot?'chatBot':'chatUser'} >
                 <img className='chatImg' src={message.isBot?botIcon:userIcon} alt='' /><p>{message.text}</p>
               </div>
