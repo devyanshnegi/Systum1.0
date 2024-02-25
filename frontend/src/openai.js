@@ -1,19 +1,11 @@
-// Run this cmd to store key in env variable
-// setx OPENAI_API_KEY "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"
+import openai from 'openai';
 
-// import OpenAI from 'openai';
+openai.apiKey = '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';
 
-const { OpenAI } = require('openai');
-
-const openai = new OpenAI({ key: apiKey });
-
-async function main() {
+export async function sendMsgToOpenAI(message) {
   const completion = await openai.chat.completions.create({
     messages: [{ role: "system", content: "You are a helpful assistant." }],
     model: "gpt-3.5-turbo",
   });
-
-  console.log(completion.choices[0]);
+  console.log(completion?.choices[0]);
 }
-
-main();
