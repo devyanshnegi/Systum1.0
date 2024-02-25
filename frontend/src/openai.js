@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI({apiKey:"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", dangerouslyAllowBrowser: true});
+const openai = new OpenAI({apiKey:"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", dangerouslyAllowBrowser: true});
 
 export async function sendMsgToOpenAI(message) {
   try{
@@ -9,7 +9,7 @@ export async function sendMsgToOpenAI(message) {
       model: "gpt-3.5-turbo",
     });
 
-    console.log(completion.choices[0]);
+    return completion.choices[0];
   }
   catch(e){
     console.log(e);
